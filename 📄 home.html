@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WeStop - Barang Bekas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Barang yang Dijual</h1>
+  <div id="items"></div>
+
+  <script>
+    // Ambil data dari localStorage (jika kamu simpan di sana)
+    const storedItems = JSON.parse(localStorage.getItem('westopItems')) || [];
+
+    const itemsContainer = document.getElementById('items');
+
+    storedItems.reverse().forEach(item => {
+      const itemHTML = `
+        <div class="item">
+          <img src="${item.image}" alt="${item.title}">
+          <h2>${item.title}</h2>
+          <p>${item.description}</p>
+        </div>`;
+      itemsContainer.insertAdjacentHTML('beforeend', itemHTML);
+    });
+  </script>
+</body>
+</html>
